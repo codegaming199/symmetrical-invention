@@ -1,3 +1,4 @@
+
 name: RDP
 
 on:
@@ -41,7 +42,7 @@ jobs:
           
           # Create user with the fixed password
           $securePass = ConvertTo-SecureString $password -AsPlainText -Force
-          New-LocalUser -Name "RDP" -Password $securePass -AccountNeverExpires
+          New-LocalUser -Name "RDP" -Password $securePass -PasswordNeverExpires:$true -AccountNeverExpires
           Add-LocalGroupMember -Group "Administrators" -Member "RDP"
           Add-LocalGroupMember -Group "Remote Desktop Users" -Member "RDP"
           
